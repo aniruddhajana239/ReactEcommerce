@@ -1,0 +1,25 @@
+header{
+    background: $green-9D;
+    .header_main{
+        @include display-space-between;
+        .header_left{
+            a{
+                @include heading2;
+                padding: 25px 12px;
+                display: block;
+            }
+        }
+        .header_right{
+            ul{
+                @include display-align-center;
+                li{
+                    a{
+                        @include heading2;
+                        padding: 25px 12px;
+                        display: block;
+                    }
+                }
+            }
+        }
+    }
+}

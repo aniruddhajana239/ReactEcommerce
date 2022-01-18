@@ -1,0 +1,102 @@
+.main_body{
+    .hero_slider{
+        .slider_item{
+            position: relative;
+            .slider_img{
+                height: 600px;
+                width: 100%;
+                img{
+                    height: 600px;
+                    width: 100%;
+                }
+            }
+            .slider_content{
+                position: absolute;
+                top: 30%;
+                left: 50px;
+                color: $white-FF;
+                h2{
+                    font-size: 50px;
+                    margin-bottom: 15px;
+                }
+                p{
+                    font-size: 25px;
+                    margin-bottom: 60px;
+                    text-transform: uppercase;
+                    position: relative;
+                    &:before{
+                        position: absolute;
+                        content: '';
+                        left: 0;
+                        height: 3px;
+                        width: 150px;
+                        background: $white-FF;
+                        bottom: -10px;
+                    }
+                }
+                .hero_cta{
+                    @include  button-primary;
+                }
+            }
+        }
+    }
+    .sec{
+        margin-top: 60px;
+    }
+    .men_section{
+        .man-sec-heading{
+            @include heading1;
+        }
+        .product_list{
+            @include display-align-center;
+            flex-wrap: wrap;
+            margin: 40px -20px 0;
+            .product_item{
+                box-shadow: 0 0 8px 0 rgba(0,0,0,0.2);
+                width: calc(25% - 40px);
+                margin: 0 20px 20px;
+                padding: 10px;
+                .product_img{
+                    height: 250px;
+                    width: 100%;
+                    img{
+                        width: 100%;
+                        height: 250px;
+                    }
+                }
+                .product_data{
+                    padding: 20px;
+                    .price{
+                        margin-bottom: 15px;
+                        @include display-space-between;
+                        align-items: flex-start;
+                        .product_price{
+                            @include display-align-center;
+                            @include  description2;
+                            span{
+                                font-size: 12px;
+                                margin-left: 10px;
+                            }
+                        }
+                        .product_rating{
+                            @include  description2;
+                            @include display-align-center;
+                            i{
+                                margin-right: 5px;
+                            }
+                        }
+                    }
+                    .product_title{
+                        @include description1;
+                        @include max-line-1;
+                    }
+                    .product_desc{
+                        margin-top: 10px;
+                        font-size: 18px;
+                       @include max-line-1;
+                    }
+                }
+            }
+        }
+    }
+}
