@@ -46,6 +46,7 @@
     .men_section{
         .man-sec-heading{
             @include heading1;
+            text-transform: uppercase;
         }
         .product_list{
             @include display-align-center;
@@ -55,8 +56,8 @@
                 box-shadow: 0 0 8px 0 rgba(0,0,0,0.2);
                 width: calc(25% - 40px);
                 margin: 0 20px 20px;
-                padding: 10px;
                 .product_img{
+                    padding: 10px 10px 0;
                     height: 250px;
                     width: 100%;
                     img{
@@ -66,6 +67,8 @@
                 }
                 .product_data{
                     padding: 20px;
+                    margin-top: 30px;
+                    border: 1px solid $grey-E0;
                     .price{
                         margin-bottom: 15px;
                         @include display-space-between;
@@ -95,6 +98,12 @@
                         font-size: 18px;
                        @include max-line-1;
                     }
+                }
+            }
+            &.product_slider{
+                .product_item{
+                    width: auto;
+                    margin: 0;
                 }
             }
         }

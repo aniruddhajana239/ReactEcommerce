@@ -4,6 +4,9 @@
 @import "./icons";
 @import "./header";
 @import "./home";
+@import "./productDetails";
+@import "./admin";
+@import './login';
 
 
 * { margin:0; padding:0; box-sizing:border-box; }
@@ -84,4 +87,24 @@ select{
   -webkit-appearance: none;
   -moz-appearance: none;
   appearance: none;
+}
+.error_img{
+  height: 85vh;
+  @include display-justify-center;
+  flex-direction: column;
+  a{
+    background: $green-9D;
+    border: 1px solid $green-9D;
+    @include display-justify-center;
+    padding: 10px 20px;
+    color: $white-FF;
+    font-size: 18px;
+    transition: 0.3s;
+    &:hover{
+      color: $green-9D;
+      border: 1px solid $green-9D;
+      transition: 0.3s;
+      background: transparent;
+    }
+  }
 }

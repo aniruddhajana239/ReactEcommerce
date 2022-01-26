@@ -1,0 +1,86 @@
+.product_details_wrap{
+    padding: 80px 0;
+    .product_details{
+        @include display-start-between;
+        .product_dLeft{
+            width: 50%;
+            @include display-justify-center;
+            .img_wrap{
+                @include display-justify-center;
+                border: 2px solid $grey-E0;
+                height: 420px;
+                width: 420px;
+                img{
+                    width: auto;
+                    height: 400px;
+                }
+            }
+        }
+        .product_dright{
+            width: 50%;
+            .breadcum{
+                @include display-align-center;
+                li{
+                    @include display-align-center;
+                    position: relative;
+                    margin-left: 25px;
+                    &:first-child{
+                        margin-left: 0;
+                    }
+                    &:after{
+                        content: ">";
+                        position: absolute;
+                        right: -15px;
+                        color: $grey-B2;
+                    }
+                    a,p{
+                        color: $grey-B2;
+                    }
+                    &:last-child{
+                        &::after{
+                            display: none;
+                        }
+                    }
+                }
+            }
+            .title{
+                @include description1;
+                margin-top: 10px;
+            }
+            .desc{
+                margin-top: 20px;
+                @include description2;
+            }
+            .rating{
+                @include display-space-between;
+                margin-top: 20px;
+                .price{
+                    @include description1;
+                    font-size: 30px;
+                }
+                .rate{
+                    margin-left: 50px;
+                    @include description2;
+                }
+            }
+            .btn_wrap{
+                @include display-align-center;
+                margin: 40px -10px 0;
+                a{
+                    @include display-justify-center;
+                    @include description2;
+                    width: 50%;
+                    margin: 0 10px;
+                    color: $white-FF;
+                    padding: 10px;
+                    &.cart{
+                        background: $yellow-1B;
+                    }
+                    &.buy{
+                        background: $red-1B;
+                    }
+                }
+            }
+        }
+    }
+}

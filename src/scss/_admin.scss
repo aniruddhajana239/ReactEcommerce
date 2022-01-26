@@ -1,0 +1,100 @@
+.admin_sec{
+    padding: 100px 0;
+    .main_title{
+        @include heading1;
+        margin-bottom: 20px;
+    }
+    .admin_header{
+        @include display-space-between;
+        margin-bottom: 20px;
+        h2{
+            @include heading3;
+        }
+        input{
+            height: 40px;
+            width: 250px;
+            border: 1px solid $grey-E0;
+            padding: 10px;
+        }
+    }
+    .pagination_wrap{
+        @include display-justify-center;
+        .pagination{
+            margin: 0 -5px;
+            li{
+                margin: 0 5px;
+                a{
+                    @include display-justify-center;
+                    font-size: 15px;
+                    height: 35px;
+                    width: 35px;
+                    border: 1px solid $green-9D;
+                    border-radius: 5px;
+                    transition: 0.3s;
+                }
+                &:hover, &.active{
+                   a{
+                        transition: 0.3s;
+                        background: $green-9D;
+                        color: $white-FF;
+                   }
+                }
+            }
+        }
+    }
+    .admin_inner{
+        @include display-start-between;
+        .admin_left{
+            width: calc(40% - 10px);
+            margin-right: 10px;
+            form{
+                .form_group{
+                    display: flex;
+                    align-items: flex-start;
+                    margin-top: 15px;
+                    &:first-child{
+                        margin-top: 0;
+                    }
+                    label{
+                        @include description2;
+                        margin-right: 10px;
+                        width: 30%;
+                    }
+                    input, select, textarea{
+                        width: 70%;
+                        @include description2;
+                        padding: 8px 10px;
+                        border: 1px solid $grey-E0;
+                        background: transparent;
+                    }
+                }
+                .btn_wrap{
+                    @include display-justify-center;
+                    margin-top: 25px;
+                    button{
+                        @include button-primary;
+                    }
+                }
+            }
+        }
+        .admin_right{
+            width: calc(60% - 10px);
+            margin-left: 10px;
+            .table{
+                tbody{
+                    tr{
+                        td{
+                            img{
+                                height: 80px;
+                                max-width: 80px;
+                            }
+                            .edit{
+                                cursor: pointer;
+                            }
+                        }
+                    }
+                }
+            }
+        }
+    }
+}

@@ -1,14 +1,12 @@
-import React, { useState, useEffect } from 'react'
+import React from 'react'
 import OwlCarousel from "react-owl-carousel";
 import "owl.carousel/dist/assets/owl.carousel.css";
 import "owl.carousel/dist/assets/owl.theme.default.css";
 import SliderData from '../Common/SliderData';
 import { NavLink } from 'react-router-dom';
-import axios from 'axios';
+import ProductList from './ProductList';
 
 const Home = () => {
-    const [mdata, setMdata] = useState([]);
-    // console.log(data);
     const options = {
         responsiveClass: true,
         nav: false,
@@ -19,17 +17,7 @@ const Home = () => {
         items: 1,
         dots: false,
     };
-    useEffect(() => {
-        const getData = async () => {
-            const res = await axios.get(`https://fakestoreapi.com/products/category/men's clothing`).catch((error) => {
-                alert("Error msg");
-            });;
-            const actualData = res.data;
-            console.log(actualData);
-            setMdata(actualData);
-        }
-        getData();
-    }, [])
+
     return (
         <>
             <div className="main_body">
@@ -49,30 +37,10 @@ const Home = () => {
                         )
                     })}
                 </OwlCarousel>
-                <div className="container-medium">
-                    <div className="men_section sec">
-                        <h2 className="man-sec-heading">Men</h2>
-                        <ul className='product_list'>
-                            {mdata.map((val) => {
-                                return (
-                                    <li className='product_item' key={val.id}>
-                                        <div className="product_img">
-                                            <img src={val.image} alt="" />
-                                        </div>
-                                        <div className="product_data">
-                                            <div className="price">
-                                                <p className='product_price'>INR 150.25<span>({val.rating.count} left only)</span></p>
-                                                <p className='product_rating'><i className='icon-star'></i>{val.rating.rate}</p>
-                                            </div>
-                                            <h2 className='product_title'>{val.title}</h2>
-                                            <p className='product_desc'>{val.description}</p>
-                                        </div>
-                                    </li>
-                                )
-                            })}
-                        </ul>
-                    </div>
-                </div>
+                <ProductList section="man's-cloths" />
+                <ProductList section="women's-cloths" />
+                <ProductList section="jewelery" />
+                <ProductList section="electronics" />
             </div>
         </>
     )

@@ -68,6 +68,12 @@
   line-height: 50px;
   font-weight: 700;
 }
+@mixin heading3 {
+  color: $black-000;
+  font-size: 30px;
+  line-height: 50px;
+  font-weight: 600;
+}
 @mixin heading2 {
   font-size: 20px;
   line-height: 25px;
@@ -87,10 +93,17 @@
 
 @mixin button-primary {
   min-width: 100px;
-  padding: 10px 25px;
+  padding: 5px 25px;
   color: $white-FF;
-  font-size: 25px;
+  font-size: 20px;
   background: $green-9D;
+  border: 1px solid $green-9D;
+  transition: 0.3s;
+  &:hover{
+    background: $white-FF;
+    color: $green-9D;
+    transition: 0.3s;
+  }
 }
 @mixin max-line-1 {
   text-overflow: ellipsis;
