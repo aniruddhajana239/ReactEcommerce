@@ -31,7 +31,7 @@ const Home = () => {
                                 <div className='slider_content'>
                                     <h2>{val.title}</h2>
                                     <p>{val.desc}</p>
-                                    <NavLink to="/all-product" className="hero_cta">SHOP NOW</NavLink>
+                                    <NavLink to="/" className="hero_cta">SHOP NOW</NavLink>
                                 </div>
                             </div>
                         )

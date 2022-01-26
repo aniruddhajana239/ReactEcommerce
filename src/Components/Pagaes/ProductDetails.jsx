@@ -43,7 +43,7 @@ const ProductDetails = () => {
                                 </ul>
                                 <h1 className="title">{DetailData.title}</h1>
                                 <div className="rating">
-                                    <p className="price">Price: {DetailData.price}</p>
+                                    <p className="price">Price: ₹ {DetailData.price}</p>
                                     {/* <p className="rate">Ratting: <i className='icon-star'></i>{DetailData.rating.rate}</p> */}
                                 </div>
                                 <p className="desc">{DetailData.description}</p>
