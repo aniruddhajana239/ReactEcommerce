@@ -45,7 +45,7 @@ const Admin = () => {
     useEffect(() => {
         // all product api call
         const getAllData = async () => {
-            const res = await axios.get('https://fakestoreapi.com/products').catch((error) => {
+            const res = await axios.get('https://fakestoreapi.com/products?limit=2').catch((error) => {
                 console.log(error);
             })
             const actualData = res.data;

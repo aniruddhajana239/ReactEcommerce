@@ -1,8 +1,21 @@
 import React, { useState } from 'react'
+import axios from 'axios';
+import { useNavigate } from "react-router-dom";
 
 const Login = () => {
     const [login, setLogin] = useState(true);
     const [signup, setSignup] = useState(false);
+    const [loginD, setLoginD] = useState({
+        uname: '',
+        pass: '',
+    });
+    const history = useNavigate();
+    const LoginEvent = (e) => {
+        const { name, value } = e.target;
+        setLoginD({
+            ...loginD, [name]: value
+        })
+    }
 
     const ShowLogin = () => {
         setLogin(true);
@@ -13,21 +26,39 @@ const Login = () => {
         setSignup(true);
     }
 
+    const SubmitLogin = (e) => {
+        e.preventDefault();
+        axios.post(`https://fakestoreapi.com/auth/login`, {
+            username: loginD.uname,
+            password: loginD.pass
+        }).then(res => {
+            history("/cart");
+            setLoginD({
+                uname: '',
+                pass: '',
+            })
+            console.log('login successfull',res.data)
+        })
+        .catch((error) => {
+            alert("Please enter a valid email or password");
+        });
+    }
+
     return (
         <>
             <div className="login_signup">
-                {login && <form className='login_form'>
+                {login && <form className='login_form' onSubmit={SubmitLogin}>
                     <h1 className='login_heading'>Login</h1>
                     <div className="input_wrap">
                         <div className="form_group">
                             <label>Username</label>
-                            <input type="text" placeholder='Username' />
+                            <input type="text" placeholder='Username' name="uname" value={loginD.uname} onChange={LoginEvent} />
                         </div>
                     </div>
                     <div className="input_wrap">
                         <div className="form_group">
                             <label>Password</label>
-                            <input type="password" placeholder='Password' />
+                            <input type="password" placeholder='Password' name="pass" value={loginD.pass} onChange={LoginEvent} />
                         </div>
                     </div>
                     <div className="btn_wrap">
@@ -35,7 +66,7 @@ const Login = () => {
                     </div>
                 </form>}
                 {signup && <form className='signup_form'>
-                <h1 className='login_heading'>Sign Up</h1>
+                    <h1 className='login_heading'>Sign Up</h1>
                     <div className="input_wrap">
                         <div className="form_group">
                             <label>First Name</label>
