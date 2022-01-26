@@ -1,0 +1,24 @@
+.main_body{
+    .empty_cart{
+        @include display-justify-center;
+        flex-direction: column;
+        min-height: 80vh;
+        h1{
+            @include heading3;
+        }
+        a{
+            @include display-justify-center;
+            @include heading2;
+            padding: 20px;
+            background: $red-1B;
+            border: 1px solid $red-1B;
+            margin-top: 30px;
+            transition: 0.3s;
+            &:hover{
+                background: transparent;
+                transition: 0.3s;
+                color: $red-1B;
+            }
+        }
+    }
+}

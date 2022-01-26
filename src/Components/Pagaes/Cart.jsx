@@ -1,9 +1,15 @@
 import React from 'react'
+import { NavLink } from 'react-router-dom';
 
 const Cart = () => {
     return (
         <>
-            <h1>This is cart page</h1>
+           <div className="main_body">
+               <div className="empty_cart">
+                   <h1>Your cart is empty!</h1>
+                   <NavLink to='/'>Please add some product</NavLink>
+               </div>
+           </div>
         </>
     )
 }

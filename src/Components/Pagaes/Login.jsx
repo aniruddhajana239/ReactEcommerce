@@ -1,6 +1,8 @@
 import React, { useState } from 'react'
 import axios from 'axios';
 import { useNavigate } from "react-router-dom";
+import { ToastContainer, toast } from 'react-toastify';
+import 'react-toastify/dist/ReactToastify.css';
 
 const Login = () => {
     const [login, setLogin] = useState(true);
@@ -9,7 +11,7 @@ const Login = () => {
         uname: '',
         pass: '',
     });
-    const history = useNavigate();
+
     const LoginEvent = (e) => {
         const { name, value } = e.target;
         setLoginD({
@@ -26,6 +28,7 @@ const Login = () => {
         setSignup(true);
     }
 
+    const history = useNavigate();
     const SubmitLogin = (e) => {
         e.preventDefault();
         axios.post(`https://fakestoreapi.com/auth/login`, {
@@ -37,10 +40,9 @@ const Login = () => {
                 uname: '',
                 pass: '',
             })
-            console.log('login successfull',res.data)
-        })
-        .catch((error) => {
-            alert("Please enter a valid email or password");
+            console.log('login successfull', res.data)
+        }).catch((error) => {
+            toast.warning('Enter a valid username & password', { position: "top-center" });
         });
     }
 
@@ -123,10 +125,11 @@ const Login = () => {
                 </form>}
 
                 <div className="user_suugesation">
-                    <p onClick={ShowLogin}>New here? <span>Login</span></p>
-                    <p onClick={ShowSignup}>Already have an account? <span>Signup</span></p>
+                    {signup && <p onClick={ShowLogin}>Already have an account? <span>Login</span></p>}
+                    {login && <p onClick={ShowSignup}>New here? <span>Signup</span></p>}
                 </div>
             </div>
+            <ToastContainer />
         </>
     )
 }
