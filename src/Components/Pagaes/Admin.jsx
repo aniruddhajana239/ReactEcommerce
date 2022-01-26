@@ -17,7 +17,6 @@ const Admin = () => {
         title: '',
         price: '',
         desc: '',
-        search_data: '',
     })
     const SelectEvent = (e) => {
         setCategory(e.target.value);
@@ -31,26 +30,28 @@ const Admin = () => {
     const FileUpload = (upfile) => {
         setFile(upfile.target.files[0]);
     }
-    const SubmiForm = (e) => {
+    const SubmiForm = async (e) => {
         e.preventDefault();
-        console.log("submit");
+        axios.post(`https://fakestoreapi.com/products`, {
+            title: inputData.title,
+            price: inputData.price,
+            desc: inputData.description,
+            category: category,
+            image: file,
+        }).then(res=>{
+            console.log(res.data)
+        })
     }
     useEffect(() => {
         // all product api call
         const getAllData = async () => {
-            const res = await axios.get('https://fakestoreapi.com/products?limit=2').catch((error) => {
+            const res = await axios.get('https://fakestoreapi.com/products').catch((error) => {
                 console.log(error);
             })
             const actualData = res.data;
             setAllList(actualData);
         }
-        // Update product api
-        const updateData = async () => {
-            const res = await axios.post(`https://fakestoreapi.com/products`,inputData).catch((error) => {
-                console.log(error);
-            })
-        }
-        // all product api call
+        // all users api call
         const getUserData = async () => {
             const res = await axios.get('https://fakestoreapi.com/users').catch((error) => {
                 console.log(error);
@@ -59,7 +60,6 @@ const Admin = () => {
             setUserList(userData);
         }
         getAllData();
-        updateData();
         getUserData();
     }, [])
 
@@ -112,7 +112,7 @@ const Admin = () => {
                             <div className="admin_right">
                                 <div className="admin_header">
                                     <h2>Product List</h2>
-                                    <input type='text' name='search_data' value={Psearch} onChange={(e)=>{setPsearch(e.target.value)}}  placeholder='Search' />
+                                    <input type='text' name='search_data' value={Psearch} onChange={(e) => { setPsearch(e.target.value) }} placeholder='Search' />
                                 </div>
                                 <table className="table table-bordered">
                                     <thead>
@@ -164,7 +164,7 @@ const Admin = () => {
                             <div className="admin_right">
                                 <div className="admin_header">
                                     <h2>Product List</h2>
-                                    <input type='text' name='search_data' value={Usearch} onChange={(e)=>{setUsearch(e.target.value)}}  placeholder='Search' />
+                                    <input type='text' name='search_data' value={Usearch} onChange={(e) => { setUsearch(e.target.value) }} placeholder='Search' />
                                 </div>
                                 <table className="table table-bordered">
                                     <thead>
