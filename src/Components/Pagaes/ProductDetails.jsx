@@ -5,7 +5,6 @@ import ProductSlider from '../Helper/ProductSlider';
 
 const ProductDetails = () => {
     const [DetailData, setDetailData] = useState({});
-    const [AllList, setAllList] = useState([]);
     const { pId } = useParams();
     useEffect(() => {
         const getData = async () => {
@@ -15,15 +14,7 @@ const ProductDetails = () => {
             const actualData = res.data;
             setDetailData(actualData);
         }
-        const getAllData = async () => {
-            const res = await axios.get('https://fakestoreapi.com/products').catch((error) => {
-                console.log(error);
-            })
-            const actualData = res.data;
-            setAllList(actualData);
-        }
         getData();
-        getAllData();
     }, [])
     return (
         <>

@@ -12,11 +12,11 @@ const Admin = () => {
     const [AllList, setAllList] = useState([]);
     const [UserList, setUserList] = useState([]);
     const [category, setCategory] = useState('');
-    const [file, setFile] = useState('');
     const [inputData, setInputData] = useState({
         title: '',
         price: '',
         desc: '',
+        img: ''
     })
     const SelectEvent = (e) => {
         setCategory(e.target.value);
@@ -27,9 +27,6 @@ const Admin = () => {
             ...inputData, [name]: value
         })
     }
-    const FileUpload = (upfile) => {
-        setFile(upfile.target.files[0]);
-    }
     const SubmiForm = async (e) => {
         e.preventDefault();
         axios.post(`https://fakestoreapi.com/products`, {
@@ -37,7 +34,7 @@ const Admin = () => {
             price: inputData.price,
             desc: inputData.description,
             category: category,
-            image: file,
+            image: inputData.img,
         }).then(res=>{
             console.log(res.data)
         })
@@ -97,8 +94,8 @@ const Admin = () => {
                                     </div>
                                     <div className="form_group">
                                         <label>Product Image</label>
-                                        <input type="file" name="upload" placeholder='upload' onChange={FileUpload}
-                                        />
+                                        {/* <input type="file" name="upload" placeholder='upload' onChange={FileUpload} /> */}
+                                        <input type="text" name="img" placeholder='Product image' value={inputData.img} onChange={InputEvent} />
                                     </div>
                                     <div className="form_group">
                                         <label>Product Description</label>

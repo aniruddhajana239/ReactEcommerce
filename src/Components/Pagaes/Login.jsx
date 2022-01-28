@@ -35,11 +35,11 @@ const Login = () => {
             username: loginD.uname,
             password: loginD.pass
         }).then(res => {
-            history("/cart");
             setLoginD({
                 uname: '',
                 pass: '',
             })
+            history("/cart");
             console.log('login successfull', res.data)
         }).catch((error) => {
             toast.warning('Enter a valid username & password', { position: "top-center" });
